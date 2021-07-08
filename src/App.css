@@ -23,9 +23,7 @@ a {
 }
 
 /* Moday Style */
-.hidden {
-  display: none;
-}
+
 .overlay {
   position: absolute;
   width: 100%;
@@ -123,6 +121,7 @@ a {
 }
 .react-tabs__tab {
   width: 50%;
+
   background-color: var(--orange-red);
   color: var(--white);
   border: none;
@@ -135,13 +134,64 @@ a {
   color: var(--orange-red);
 }
 .react-tabs__tab-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
-}
-.react-tabs__tab-panel {
   text-align: left;
 }
-.react-tabs__tab-panel .location {
-  text-align: center;
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registration-form {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.registration-form label,
+.attend-choice {
+  width: 100%;
+}
+.attend-choice {
+  display: flex;
+  align-items: center;
+}
+
+.registration-form input::placeholder {
+  color: #ddd;
+}
+.registration-form input {
+  padding: 10px;
+  padding-left: 30px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  outline: none;
+}
+
+.registration-form > input:focus {
+  box-shadow: 0 1px 2px #ddd;
+}
+
+.registration-form #username {
+  background: url(./assets/img/profile.svg) no-repeat scroll 7px 7px;
+}
+.registration-form #useremail {
+  background: url(./assets/img/envelope.svg) no-repeat scroll 7px 7px;
+}
+.registration-form #phone-number {
+  background: url(./assets/img/phone.svg) no-repeat scroll 7px 7px;
+}
+.success-message {
+  padding: 1rem;
+}
+.success-message h2 {
+  color: var(--orange-red);
 }
 
 .account-details {
@@ -300,7 +350,37 @@ a {
   position: absolute;
   bottom: 1rem;
 }
+.hidden {
+  display: none;
+}
+.bold-text {
+  font-weight: 700;
+}
+p.header__info {
+  width: 25%;
+  letter-spacing: normal !important;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+p.opaque-info {
+  width: 30%;
+  font-size: 0.8rem !important;
+  color: #fff;
+  padding: 5px 5px;
+  letter-spacing: 0.2rem !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  text-align: center;
+}
 @media (max-width: 414px) {
+  .header {
+    background-image: url(./assets/img/mobilebg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
   .header h1 {
     font-size: 5.5rem;
   }
@@ -309,6 +389,13 @@ a {
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.6em;
+  }
+  p.header__info {
+    width: 90%;
+    line-height: 1.5;
+  }
+  p.opaque-info {
+    width: 85%;
   }
 
   .toast {

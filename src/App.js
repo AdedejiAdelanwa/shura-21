@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { VictoryPie } from "victory";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import senator from "./assets/img/senator-material.jpeg";
 import ankara from "./assets/img/ankara-material.jpeg";
 import cap from "./assets/img/cap-material.jpeg";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const calculateTimeLeft = () => {
@@ -27,6 +28,12 @@ function App() {
   const [clicked, setClicked] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [clicked2, setClicked2] = useState(false);
+  const [username, setUsername] = useState("");
+  const [useremail, setUseremail] = useState("");
+  const [phonenumber, setPhonnumber] = useState("");
+  const [attendOption, setAttentOption] = useState("");
+  const [registerStatus, setRegisterStatus] = useState(false);
+  const [hideForm, setHideForm] = useState(false);
 
   const openAttendModal = (e) => {
     e.preventDefault();
@@ -48,6 +55,43 @@ function App() {
     setOverlay(false);
     setClicked2(false);
   };
+  const register = async (e) => {
+    setRegisterStatus(true);
+    e.preventDefault();
+
+    const data = {
+      email: useremail,
+      name: username,
+      phone: phonenumber,
+      attendance: attendOption,
+    };
+    try {
+      axios
+        .post("https://shura-nikkah-app.herokuapp.com/api/register", data)
+        .then((response) => {
+          setRegisterStatus(false);
+          if (response.status === 200) {
+            setHideForm(true);
+          }
+        });
+    } catch (error) {
+      console.log(error);
+      setRegisterStatus(false);
+    }
+  };
+
+  const radioOut = (e) => {
+    setAttentOption(e.target.value);
+  };
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setUseremail(e.target.value);
+  };
+  const handlePhoneNo = (e) => {
+    setPhonnumber(e.target.value);
+  };
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
@@ -66,6 +110,13 @@ function App() {
       <header className="header">
         <p>welcome to</p>
         <h1>shura'21</h1>
+        <p className="header__info">
+          Nikah (Solemnization) between{" "}
+          <span className="bold-text">
+            Shukurah Ajoke Balogun & Abdur-Rasheed Abiodun Adeoye
+          </span>
+        </p>
+        <p className="opaque-info">7th August 2021 | FIDIMEYIN Hall, Abule-Egba | 11am</p>
       </header>
       <main className="content-wrapper">
         <div className="toast flex-vertical">
@@ -73,8 +124,9 @@ function App() {
           <p>
             And one of His signs is that He created mates for you from yourselves that you
             may find rest in them, and He put between you love and compassion; most surely
-            there are signs in this for a people who reflect. <p>-Q30:21</p>
+            there are signs in this for a people who reflect.
           </p>
+          <p>-Q30:21</p>
         </div>
         <div className="attend-box flex-vertical">
           <div>
@@ -89,36 +141,101 @@ function App() {
             Attend
           </button>
 
-          <Tabs className={`modal ${clicked ? "" : "hidden"}`}>
+          <div className={`modal ${clicked ? "registration-container" : "hidden"} `}>
             <span className="close-btn" onClick={closeAttendModal}>
               &#10005;
             </span>
-            <TabList>
-              <Tab>Physical</Tab>
-              <Tab>Virtual</Tab>
-            </TabList>
+            <form
+              className={`registration-form ${hideForm ? "hidden" : ""} `}
+              onSubmit={register}
+            >
+              <label htmlFor="username">
+                <input
+                  required
+                  type="text"
+                  name="username"
+                  id="username"
+                  value={username}
+                  placeholder="John Doe"
+                  onChange={handleUsername}
+                  onBlur={handleUsername}
+                />
+              </label>
+              <label htmlFor="useremail">
+                <input
+                  required
+                  type="email"
+                  name="useremail"
+                  id="useremail"
+                  value={useremail}
+                  placeholder="youremail@gmail.com"
+                  onChange={handleEmail}
+                  onBlur={handleEmail}
+                />
+              </label>
+              <label htmlFor="phone-number">
+                <input
+                  required
+                  type="number"
+                  name="phone-number"
+                  id="phone-number"
+                  value={phonenumber}
+                  placeholder="+2348123456789"
+                  onChange={handlePhoneNo}
+                  onBlur={handlePhoneNo}
+                />
+              </label>
+              <div className="attend-choice" value={attendOption} onChange={radioOut}>
+                <label htmlFor="physical">
+                  <input
+                    required
+                    type="radio"
+                    id="physical"
+                    name="attend-choice"
+                    value="physical"
+                  />
+                  Physical
+                </label>
 
-            <TabPanel>
-              <h4 className="location">FIDIMAYE EVENTS AND SUITES (SALVADOR HALL)</h4>
-              <p className="address">
-                44-48 Olayiwola Street, new oko oba road Abule Egba, Lagos
-              </p>
-              <p className="direction-copy">
-                From Agege/oshodi take a bus going to Sango or Abule Egba, alight at
-                Abule-Egba bus-stop. Take marwa going to puposhola and alight at Salvador
-                hall opposite OTAK filling station. You can also take bike from Abule Egba
-                bus-stop to SALVADOR HALL directly.
-              </p>
-            </TabPanel>
-            <TabPanel>
-              <iframe
-                title="zoom registration"
-                src="https://zoom.us/meeting/register/78757cd4b823a69es7c24e00bf0acfdd2b8"
-                width="100%"
-                height="100%"
-              ></iframe>
-            </TabPanel>
-          </Tabs>
+                <label htmlFor="virtual">
+                  <input
+                    required
+                    type="radio"
+                    id="virtual"
+                    name="attend-choice"
+                    value="virtual"
+                  />
+                  Virtual
+                </label>
+              </div>
+              <div>
+                <button className="cta-btn" onClick={register}>
+                  {registerStatus ? "Registering..." : "Register"}
+                </button>
+              </div>
+            </form>
+            {hideForm && (
+              <div className="success-message">
+                <svg
+                  width="70"
+                  height="78"
+                  viewBox="0 0 70 78"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M50.4738 27.5695C49.8975 26.0311 65.8092 11.8224 56.5317 0.308878C54.3608 -2.38208 46.9942 13.2003 36.5337 20.2549C30.7618 24.1462 17.333 32.4314 17.333 37.0116V66.6598C17.333 72.1674 38.6267 78 54.8071 78C60.7393 78 69.3322 40.8379 69.3322 34.936C69.3322 29.0081 51.0415 29.1121 50.4738 27.5695ZM12.9998 27.9811C10.1485 27.9811 0 29.7144 0 41.5139V62.5216C0 74.3124 10.1485 75.6124 12.9998 75.6124C15.8467 75.6124 8.66652 73.1337 8.66652 65.8192V38.2033C8.66652 30.5421 15.8467 27.9811 12.9998 27.9811Z"
+                    fill="black"
+                  />
+                </svg>
+                <h2 className="heading">Thank you!</h2>
+                <b>for registering.</b>
+                <p>
+                  Further details have been sent to the email address you provided above.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
         <div className="fabric-box flex-vertical">
           <h3 className="headings">Choose Fabric</h3>
