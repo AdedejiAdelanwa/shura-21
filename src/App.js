@@ -274,7 +274,7 @@ function App() {
               </div>
             </div>
           </div>
-          <p>Wether Ankara or Senator material, contact the number below.</p>
+          <p>For Ankara or Materials, contact the number below</p>
           <a
             href="https://wa.me/2348188750328"
             target="_blank"
