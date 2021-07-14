@@ -111,7 +111,7 @@ function App() {
         <p>welcome to</p>
         <h1>shura'21</h1>
         <p className="header__info">
-          Nikah (Solemnization) between
+          Nikah (Solemnization) between<br></br>
           <span className="bold-text">
             Shukurah Ajoke Balogun<br></br> &<br></br> Abdur-Rasheed Abiodun Adeoye
           </span>
