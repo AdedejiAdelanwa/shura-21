@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.bc387c87.chunk.css",
-    "main.js": "/static/js/main.4ad37635.chunk.js",
-    "main.js.map": "/static/js/main.4ad37635.chunk.js.map",
+    "main.css": "/static/css/main.25b1adcc.chunk.css",
+    "main.js": "/static/js/main.f43cdad4.chunk.js",
+    "main.js.map": "/static/js/main.f43cdad4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a8af3342.js",
     "runtime-main.js.map": "/static/js/runtime-main.a8af3342.js.map",
     "static/css/2.27175f2b.chunk.css": "/static/css/2.27175f2b.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.d63e5531.chunk.js.map": "/static/js/2.d63e5531.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.27175f2b.chunk.css.map": "/static/css/2.27175f2b.chunk.css.map",
-    "static/css/main.bc387c87.chunk.css.map": "/static/css/main.bc387c87.chunk.css.map",
+    "static/css/main.25b1adcc.chunk.css.map": "/static/css/main.25b1adcc.chunk.css.map",
     "static/js/2.d63e5531.chunk.js.LICENSE.txt": "/static/js/2.d63e5531.chunk.js.LICENSE.txt",
     "static/media/ankara-material.d64a1e18.jpeg": "/static/media/ankara-material.d64a1e18.jpeg",
     "static/media/cap-material.b94da47d.jpeg": "/static/media/cap-material.b94da47d.jpeg",
@@ -21,7 +21,7 @@
     "static/js/runtime-main.a8af3342.js",
     "static/css/2.27175f2b.chunk.css",
     "static/js/2.d63e5531.chunk.js",
-    "static/css/main.bc387c87.chunk.css",
-    "static/js/main.4ad37635.chunk.js"
+    "static/css/main.25b1adcc.chunk.css",
+    "static/js/main.f43cdad4.chunk.js"
   ]
 }

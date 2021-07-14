@@ -111,9 +111,9 @@ function App() {
         <p>welcome to</p>
         <h1>shura'21</h1>
         <p className="header__info">
-          Nikah (Solemnization) between{" "}
+          Nikah (Solemnization) between
           <span className="bold-text">
-            Shukurah Ajoke Balogun & Abdur-Rasheed Abiodun Adeoye
+            Shukurah Ajoke Balogun<br></br> &<br></br> Abdur-Rasheed Abiodun Adeoye
           </span>
         </p>
         <p className="opaque-info">7th August 2021 | FIDIMEYIN Hall, Abule-Egba | 11am</p>
